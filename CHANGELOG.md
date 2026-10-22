@@ -24,7 +24,7 @@
 - 出站语音：新增 `client.send_voice`（`POST /msg/sendVoice`）、
   `media.encode_voice_to_silk`（ffmpeg 24kHz mono → silk encoder → `VoiceTime` 向上取整秒）、
   `outbound.send_voice` 与适配器 `send_voice`；SILK 编码不可用时降级为普通文件。
-- 实测发送：图片 `msgServerId=1177111`、语音 `msgServerId=1177113`（6 秒 SILK 气泡），
+- 实测发送：图片 `msgServerId=1178001`、语音 `msgServerId=1178003`（6 秒 SILK 气泡），
   用户端确认收到。
 
 ## 0.1.9 — 2026-10-22

@@ -1,7 +1,7 @@
 """LIVE 冒烟测试：需要真 TOKEN，默认跳过。
 
     QWPAD_LIVE_TOKEN=wxa_xxx QWPAD_LIVE_TARGET=<自己 userId> \
-      PYTHONPATH="/root/.hermes/hermes-agent:$HSP" .venv/bin/python -m pytest tests/test_live_smoke.py -q
+      PYTHONPATH="$HERMES_HOME/hermes-agent:$HSP" .venv/bin/python -m pytest tests/test_live_smoke.py -q
 
 验证三件事：TOKEN 有效 / 事件游标能前进 / 能真的发出一条文本。
 """

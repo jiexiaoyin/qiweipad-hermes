@@ -73,7 +73,7 @@
 - 编码链：`ffmpeg -ar 24000 -ac 1 -f s16le` → `silk encoder in.pcm out.silk -tencent -quiet`
   （本机 `~/silk_decoder/silk/encoder`）。SILK 头为 `0x02#!SILK_V3`。
 - 实测：5.76 秒 TTS WAV → 17,052 字节 SILK，`VoiceTime=6`；发送成功
-  `msgServerId=1177113`，用户端收到可播放语音气泡。
+  `msgServerId=1178003`，用户端收到可播放语音气泡。
 - 插件已实现：`media.encode_voice_to_silk()` + `outbound.send_voice()` +
   适配器 `send_voice()`；编码器/ffmpeg 不可用时降级为普通文件。
 
@@ -94,7 +94,7 @@
   回复时带 `reply` 对象；窗口 `QUOTE_WINDOW_S`。
 - **只带 `reply` 的 `/msg/sendText` 会「只有引用、正文空白」**（2026-10-22 用户端实测）：
   服务端 `syncMsg` 里正文完整，但消息类型是单段 `kRichText`，企业微信客户端不渲染正文。
-- **真人客户端引用的原始结构**（`syncMsg` 1176884）：外层 `msgType=0 kText`，正文是四段：
+- **真人客户端引用的原始结构**（`syncMsg` 1176000）：外层 `msgType=0 kText`，正文是四段：
   `"` / `原文` / `"\n------\n` / `新内容`；引用块 `field 1002` 里带 `signedMsg`、原消息
   `msgUniqueIdentifier`（`f1.f16` 与 `f2`）、预览文本（`f6`）等完整字段。
 - **四段正文不能用在 API 发出的消息上**：`/msg/sendHyperText` 传四段列表
