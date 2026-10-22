@@ -136,18 +136,16 @@ qiweipad-hermes/
 git clone git@github.com:jiexiaoyin/qiweipad-hermes.git
 cd qiweipad-hermes
 
-# 注意目标目录名必须是 qwpad
+# 注意目标目录名必须是 qwpad；只同步运行必需的包和清单
 mkdir -p "$HERMES_HOME/plugins/qwpad"
-rsync -a --exclude .git --exclude .venv --exclude .testhome \
-  ./ "$HERMES_HOME/plugins/qwpad/"
+rsync -a qwpad plugin.yaml "$HERMES_HOME/plugins/qwpad/"
 ```
 
 如果使用 profile 级插件（会覆盖 home 级同名插件）：
 
 ```bash
 mkdir -p "$HERMES_HOME/profiles/<profile>/plugins/qwpad"
-rsync -a --exclude .git --exclude .venv --exclude .testhome \
-  ./ "$HERMES_HOME/profiles/<profile>/plugins/qwpad/"
+rsync -a qwpad plugin.yaml "$HERMES_HOME/profiles/<profile>/plugins/qwpad/"
 ```
 
 > ⚠️ profile 级副本优先级更高。修改代码后如果行为没变，先确认是不是改了 home 级、
