@@ -1,0 +1,81 @@
+name: qwpad
+label: QWPad (企业微信 pad 协议)
+kind: platform
+version: 0.1.10
+description: >
+  QWPad 企业微信 pad 协议网关适配器。用一个 wxa_ TOKEN 以「真人企业微信客户端」
+  身份收发消息（不是 bot、不需要自建应用回调）。收消息走 /events long-poll，
+  发消息走 /msg/sendText|sendHyperText|sendImage|sendFile。
+author: knowhub-ops
+
+manifest_version: 2
+api_version: 2
+
+requires_env:
+  - name: QWPAD_TOKEN
+    description: "QWPad 业务 TOKEN（wxa_ 前缀），一个 TOKEN 对应一个企业微信账号"
+    prompt: "QWPad TOKEN"
+    password: true
+    url: "https://api.qwpad.com"
+
+optional_env:
+  - name: QWPAD_API_BASE
+    description: "QWPad API 地址（默认 https://api.qwpad.com）"
+    prompt: "API 地址"
+    password: false
+  - name: QWPAD_ALLOWED_USERS
+    description: "允许对话的企业微信成员 ID 列表（逗号分隔；空 = 只允许配对用户）"
+    prompt: "允许的成员 ID"
+    password: false
+  - name: QWPAD_ALLOW_ALL_USERS
+    description: "放开所有人（仅调试用）"
+    prompt: "允许所有人？(true/false)"
+    password: false
+  - name: QWPAD_HOME_CHANNEL
+    description: "cron / 通知默认发送目标（群 roomId 或成员 userId）"
+    prompt: "Home channel"
+    password: false
+  - name: QWPAD_GROUP_REQUIRE_MENTION
+    description: "群里必须 @ 机器人才回复（默认 true）"
+    prompt: "群里必须 @？(true/false)"
+    password: false
+  - name: QWPAD_POLL_WAIT_SECONDS
+    description: "long-poll 等待秒数（1-30，默认 25）"
+    prompt: "轮询等待秒数"
+    password: false
+  - name: QWPAD_MAX_MESSAGE_LENGTH
+    description: "单条文本上限（字符，默认 2000）"
+    prompt: "单条消息上限"
+    password: false
+  - name: QWPAD_QUOTE_REPLIES
+    description: "回复时引用原消息（默认 true）"
+    prompt: "引用回复？(true/false)"
+    password: false
+  - name: QWPAD_RETAIN_EVENTS
+    description: "非聊天事件留存类（默认 friend_apply,friend_change,approval,cc,relationship,app_card,account_meta；off=关闭，all=全留）"
+    prompt: "留存哪些事件"
+    password: false
+  - name: QWPAD_RETAIN_MAX_BYTES
+    description: "旁路日志单文件上限（默认 10485760）"
+    prompt: "留存日志单文件上限"
+    password: false
+  - name: QWPAD_RETAIN_KEEP
+    description: "旁路日志轮转保留份数（默认 5）"
+    prompt: "留存日志保留份数"
+    password: false
+  - name: QWPAD_RETAIN_DAYS
+    description: "旁路日志保留天数（默认 30，0=不清理）"
+    prompt: "留存日志保留天数"
+    password: false
+  - name: QWPAD_SILK_DECODER
+    description: "SILK 语音解码器路径（默认 ~/silk_decoder/silk/decoder）"
+    prompt: "silk 解码器路径"
+    password: false
+  - name: QWPAD_SILK_ENCODER
+    description: "SILK 语音编码器路径（默认 ~/silk_decoder/silk/encoder）"
+    prompt: "silk 编码器路径"
+    password: false
+  - name: QWPAD_FFMPEG
+    description: "ffmpeg 可执行文件路径（默认 ffmpeg）"
+    prompt: "ffmpeg 路径"
+    password: false

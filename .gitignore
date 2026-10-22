@@ -1,0 +1,12 @@
+# 开发环境（本地 venv 只放 pytest/pyflakes，运行期依赖用 Hermes 的）
+.venv/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# 本地测试 home（含 .env，绝不外传）
+.testhome/
+
+# 凭据
+.env
+*.env
