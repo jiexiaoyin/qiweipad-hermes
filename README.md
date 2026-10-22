@@ -133,7 +133,7 @@ qiweipad-hermes/
 ### 2. 安装插件
 
 ```bash
-git clone git@github.com:jiexiaoyin/qiweipad-hermes.git
+git clone https://github.com/jiexiaoyin/qiweipad-hermes.git
 cd qiweipad-hermes
 
 # 注意目标目录名必须是 qwpad；只同步运行必需的包和清单
